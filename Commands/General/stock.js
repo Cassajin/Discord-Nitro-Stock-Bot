@@ -69,28 +69,33 @@ module.exports = {
             })
         );
 
-        // Create the embed message
-        const embed = new Discord.MessageEmbed()
-            .setTitle('Current Stock')
-            .setColor('GREEN')
-            .setDescription("Nitro Links Status:");
+// Create the embed message
+const embed = new Discord.MessageEmbed()
+    .setTitle('Current Stock')
+    .setColor('#2C2F33')
+    .setDescription("Nitro Links Status:")
+    .setThumbnail('https://media.discordapp.net/attachments/1227602786150252595/1228374144907743403/giphy_1.gif?ex=662bcf92&is=66195a92&hm=66c1355465b669fe1c6fb08548089037ebbf1f68b143e4fbc1f027f87ea0098d&=');
 
-        // Check if the arrays are not empty and add them to the embed
-        if (nitroStatusesMonthly.length > 0) {
-            embed.addField('Boosts (Monthly)', nitroStatusesMonthly.join('\n'));
-        }
-        if (nitroStatusesYearly.length > 0) {
-            embed.addField('Boosts (Yearly)', nitroStatusesYearly.join('\n'));
-        }
-        if (nitroStatusesBasicMonthly.length > 0) {
-            embed.addField('Basics (Monthly)', nitroStatusesBasicMonthly.join('\n'));
-        }
-        if (nitroStatusesBasicYearly.length > 0) {
-            embed.addField('Basics (Yearly)', nitroStatusesBasicYearly.join('\n'));
-        }
+// Emojis (replace 'BOOST_EMOJI_ID' and 'BASIC_EMOJI_ID' with actual emoji IDs)
+const boostEmoji = client.emojis.cache.get('1228372795256475668');
+const basicEmoji = client.emojis.cache.get('1228372938311471216');
 
-        embed.setFooter('Nitro Stock Bot | Made by Cassajin');
+// Check if the arrays are not empty and add them to the embed with emojis
+if (nitroStatusesMonthly.length > 0) {
+    embed.addField(`${boostEmoji} Boosts (Monthly)`, nitroStatusesMonthly.join('\n'));
+}
+if (nitroStatusesYearly.length > 0) {
+    embed.addField(`${boostEmoji} Boosts (Yearly)`, nitroStatusesYearly.join('\n'));
+}
+if (nitroStatusesBasicMonthly.length > 0) {
+    embed.addField(`${basicEmoji} Basics (Monthly)`, nitroStatusesBasicMonthly.join('\n'));
+}
+if (nitroStatusesBasicYearly.length > 0) {
+    embed.addField(`${basicEmoji} Basics (Yearly)`, nitroStatusesBasicYearly.join('\n'));
+}
 
-        message.channel.send(embed);
+embed.setFooter('Nitro Stock Bot | Made by Cassajin');
+
+message.channel.send(embed);
     }
 }
