@@ -25,7 +25,7 @@ module.exports = {
             .addFields(
                 { name: '\u200b', value: 'Please keep in mind that referring to type it means the following: boostmonthly/boostyearly/basicmonthly/basicyearly' },
                 { name: 'b!addstock <type> <link>', value: 'Do as it says, please ensure each link is on a new line.' },
-                { name: 'b!nitrosend <@user> <type> <amount>', value: 'Sends a specific set of nitros to a user. User must be in server.' },
+                { name: 'b!sendnitro <@user> <type> <amount>', value: 'Sends a specific set of nitros to a user. User must be in server.' },
                 { name: 'b!help', value: 'Here to help you!' },
                 { name: 'b!stock', value: `Boost Monthly: ${bm.length}\nBoost Yearly: ${by.length}\nBasic Monthly: ${cm.length}\nBasic Yearly: ${cy.length}` },
             )
