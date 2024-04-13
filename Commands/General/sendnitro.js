@@ -30,13 +30,27 @@ module.exports = {
         // Update the stock file
         require('fs').writeFileSync(stockFile, JSON.stringify(stockData));
 
-        // Send the nitros to the user
-        nitrosToSend.forEach(nitro => {
-            user.send(`Here is your ${type} nitro: ${nitro.Gift_Link}`).catch(() => {
-                message.channel.send(`Failed to send nitro to ${user.user.tag}.`);
-            });
+        // Send the nitros to the user with numbering
+        let sentNitros = '';
+        nitrosToSend.forEach((nitro, index) => {
+            const nitroNumber = index + 1;
+            sentNitros += `${nitroNumber}. || ${nitro.Gift_Link} ||\n`;
         });
 
-        message.channel.send(`Successfully sent ${amount} ${type} nitro(s) to ${user.user.tag}.`);
+        user.send(`\u200E‎ ‎  ‎ ‎‎/)_/)
+   {   . .}
+c/づ‎ ‎ [☆](https://discord.gg/sakuwa)  𝓵ove 𝓶ail for 𝓾
+‎ ‎  ‎ ‎ ‎  ‎ ‎ ‎  ‎thank you for buying **!**
+
+‎ ‎ ﹒ strictly no claimed warranty 
+‎ ‎ ﹒ read  our  [nitro](https://discord.com/channels/1132616889047187467/1214549189116166174) informations
+‎ ‎ ﹒ vouch the item within 24hrs
+‎ ‎ ﹒ claim within twenty minute !
+
+ ‎  ⸝⸝  𝓃itro  𝓁inks ﹕ 30  days warr\n${sentNitros}`).then(() => {
+            message.channel.send(`Successfully sent ${amount} ${type} nitro(s) to ${user.user.tag}.`);
+        }).catch(() => {
+            message.channel.send(`Failed to send nitro to ${user.user.tag}.`);
+        });
     }
 };
